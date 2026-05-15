@@ -1,0 +1,24 @@
+[
+  {
+    "risk_level": "high",
+    "risk_score": 78,
+    "reasons": [
+      "Executes arbitrary shell commands with shell=True which is vulnerable to command injection",
+      "Pushes code to git repositories (potentially production branches)",
+      "Uses environment variables for git config that could be manipulated",
+      "Function names suggest automated deployment workflow (build_commit_push)",
+      "No input validation or sanitization on command strings",
+      "Working directory can be arbitrarily specified"
+    ],
+    "dangerous_operations": [
+      "subprocess.run with shell=True enables arbitrary command execution",
+      "git config commands could be injected via environment variables",
+      "Automated git push to branches including 'main' (production)",
+      "5-minute timeout allows long-running potentially harmful commands"
+    ],
+    "has_error_handling": true,
+    "recommendation": "Do not auto-deploy; this script requires manual review due to shell injection vulnerabilities and automated git push capabilities that could deploy untested code to production.",
+    "safe_to_auto_deploy": false,
+    "pattern_name": "build_commit_push"
+  }
+]

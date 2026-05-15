@@ -1,0 +1,6 @@
+typer
+rich
+anthropic
+watchdog
+python-dotenv
+slack-sdk
